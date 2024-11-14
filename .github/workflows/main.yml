@@ -68,7 +68,7 @@ jobs:
         with:
           context: ./backend/
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/kittygram_backend:latest
+          tags: ${{secrets.DOCKER_USERNAME}}/kittygram_backend:latest
 
   frontend_tests:
     runs-on: ubuntu-latest
