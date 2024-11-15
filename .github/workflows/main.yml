@@ -149,6 +149,16 @@ jobs:
         echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
       shell: bash
 
+    - name: Copy .env file to server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        source: "./.env"
+        target: "kittygram"
+      
     - name: Copy docker-compose.yml and .env via ssh
       uses: appleboy/scp-action@master
       with:
