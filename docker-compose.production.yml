@@ -4,6 +4,7 @@ version: '3'
 volumes:
   pg_data_production:
   static_volume:
+  media:
 
 services:
   db:
@@ -16,7 +17,7 @@ services:
     env_file: .env
     volumes:
       - static_volume:/backend_static
-      - static_volume:/media
+      - media:/media
   frontend:
     image: sevastiandolbilin/kittygram_frontend
     env_file: .env
