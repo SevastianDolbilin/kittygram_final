@@ -28,7 +28,7 @@ services:
     image: sevastiandolbilin/kittygram_gateway
     env_file: .env
     volumes:
-      - static_volume:/staticfiles/
+      - static_volume:/static_files/
       - media_product:/app/media/
     ports:
       - 9000:80 
