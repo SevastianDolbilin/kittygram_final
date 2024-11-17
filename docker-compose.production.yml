@@ -16,20 +16,20 @@ services:
     image: sevastiandolbilin/kittygram_backend
     env_file: .env
     volumes:
-      - static_volume:/backend_static/
+      - static_volume:/backend_static
       - media_product:/app/media/
   frontend:
     image: sevastiandolbilin/kittygram_frontend
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static_volume:/frontend_static/
+      - static_volume:/frontend_static
   gateway:
     image: sevastiandolbilin/kittygram_gateway
     env_file: .env
     volumes:
-      - static_volume:/staticfiles/
-      - media_product:/app/media/
+      - static_volume:/staticfiles
+      - media_product:/app/media
     ports:
       - 9000:80 
  
