@@ -1,4 +1,3 @@
-# docker-compose.production.yml
 version: '3'
 
 volumes:
@@ -12,24 +11,38 @@ services:
     env_file: .env
     volumes:
       - pg_data_production:/var/lib/postgresql/data
+    restart: always
+
   backend:
-    image: sevastiandolbilin/kittygram_backend
+    image: sevastiandolbilin/kittygram_backend:latest
     env_file: .env
     volumes:
       - static_volume:/backend_static
       - media_product:/app/media/
+    depends_on:
+      - db
+    restart: always
+
   frontend:
-    image: sevastiandolbilin/kittygram_frontend
+    image: sevastiandolbilin/kittygram_frontend:latest
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static_volume:/frontend_static
+    depends_on:
+      - backend
+    restart: always
+
   gateway:
-    image: sevastiandolbilin/kittygram_gateway
+    image: sevastiandolbilin/kittygram_gateway:latest
     env_file: .env
     volumes:
       - static_volume:/staticfiles
       - media_product:/app/media
     ports:
-      - 9000:80 
+      - 9000:80
+    depends_on:
+      - backend
+      - frontend
+    restart: always
  
