@@ -104,9 +104,11 @@ docker-compose up -d
 ```
 
 3. Применение миграций и создание суперпользователя
+   
     docker exec -it kittygram_backend python manage.py migrate
     docker exec -it kittygram_backend python manage.py createsuperuser
 
-4. Сборка статических файлов
+5. Сборка статических файлов
+   
     docker exec -it kittygram_backend python manage.py collectstatic --noinput
     После выполнения всех шагов проект будет готов к использованию.
