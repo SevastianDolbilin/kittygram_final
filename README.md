@@ -62,6 +62,7 @@ git clone https://github.com/your-repo.git
 cd your-repo
 ```
 2. Создание и активация виртуального окружения
+   
     python -m venv venv
 
     # Windows
@@ -70,18 +71,22 @@ cd your-repo
     # Linux/MacOS
     source venv/bin/activate
 
-3. Установка зависимостей
+4. Установка зависимостей
+   
     pip install -r requirements.txt
 
-4. Применение миграций и создание суперпользователя
+5. Применение миграций и создание суперпользователя
+   
     cd backend
     python manage.py migrate
     python manage.py createsuperuser
 
-5. Локальное развертывание проекта
+6. Локальное развертывание проекта
+   
     python manage.py runserver
 
-6. Запуск Фронтенда
+7. Запуск Фронтенда
+   
     cd frontend
     npm install
     npm start
